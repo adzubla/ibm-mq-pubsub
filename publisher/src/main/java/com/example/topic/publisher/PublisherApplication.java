@@ -25,7 +25,7 @@ public class PublisherApplication implements CommandLineRunner {
         BufferedReader in = new BufferedReader(new InputStreamReader(System.in));
         while (true) {
             String line = in.readLine();
-            if (line == null) {
+            if (line == null || line.equals("")) {
                 break;
             }
             publisher.send(line);
