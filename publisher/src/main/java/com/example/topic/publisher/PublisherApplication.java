@@ -14,7 +14,7 @@ import java.io.InputStreamReader;
 public class PublisherApplication implements CommandLineRunner {
 
     @Autowired
-    JmsPublisher publisher;
+    TopicPublisher publisher;
 
     public static void main(String[] args) {
         SpringApplication.run(PublisherApplication.class, args);
