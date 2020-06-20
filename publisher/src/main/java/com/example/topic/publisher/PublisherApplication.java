@@ -14,7 +14,10 @@ import java.io.InputStreamReader;
 public class PublisherApplication implements CommandLineRunner {
 
     @Autowired
-    TopicPublisher publisher;
+    TopicPublisher topic;
+
+    @Autowired
+    QueueProducer queue;
 
     public static void main(String[] args) {
         SpringApplication.run(PublisherApplication.class, args);
@@ -28,7 +31,8 @@ public class PublisherApplication implements CommandLineRunner {
             if (line == null || line.equals("")) {
                 break;
             }
-            publisher.send(line);
+            topic.send(line);
+            queue.send(line);
         }
         System.out.println("DONE");
     }

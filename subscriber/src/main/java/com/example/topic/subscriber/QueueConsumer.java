@@ -10,20 +10,20 @@ import org.springframework.stereotype.Component;
 import javax.jms.ConnectionFactory;
 
 @Component
-public class TopicSubscriber {
+public class QueueConsumer {
 
     @Bean
-    public JmsListenerContainerFactory<?> topicConnectionFactory(ConnectionFactory connectionFactory,
+    public JmsListenerContainerFactory<?> queueConnectionFactory(ConnectionFactory connectionFactory,
                                                                  DefaultJmsListenerContainerFactoryConfigurer configurer) {
         DefaultJmsListenerContainerFactory factory = new DefaultJmsListenerContainerFactory();
         configurer.configure(factory, connectionFactory);
-        factory.setPubSubDomain(true);
+        factory.setPubSubDomain(false);
         return factory;
     }
 
-    @JmsListener(destination = "${example.topic}", containerFactory = "topicConnectionFactory")
+    @JmsListener(destination = "${example.queue}", containerFactory = "queueConnectionFactory")
     public void receive(String text) {
-        System.out.println("Received from topic: " + text);
+        System.out.println("Received from queue: " + text);
     }
 
 }
