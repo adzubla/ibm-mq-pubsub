@@ -9,6 +9,8 @@
     <version>0.0.1-SNAPSHOT</version>
     <packaging>pom</packaging>
 
+    <description>Use of queue and topic in the *same* Spring Boot application</description>
+
     <modules>
         <module>publisher</module>
         <module>subscriber</module>
