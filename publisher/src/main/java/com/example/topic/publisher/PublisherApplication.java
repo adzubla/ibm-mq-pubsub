@@ -16,9 +16,6 @@ public class PublisherApplication implements CommandLineRunner {
     @Autowired
     TopicPublisher topic;
 
-    @Autowired
-    QueueProducer queue;
-
     public static void main(String[] args) {
         SpringApplication.run(PublisherApplication.class, args);
     }
@@ -32,7 +29,6 @@ public class PublisherApplication implements CommandLineRunner {
                 break;
             }
             topic.send(line);
-            queue.send(line);
         }
         System.out.println("DONE");
     }
